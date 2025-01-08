@@ -17,7 +17,7 @@ export default function BookJournal() {
 
   const handleAddBook = () => {
     setPopupMode("add");
-    setSelectedBook(null); // Clear form data for adding a new book
+    setSelectedBook(null);
     setIsPopupOpen(true);
   };
 
@@ -85,29 +85,20 @@ export default function BookJournal() {
   return (
     <div className="w-full">
       <h1 className="mb-4 text-xl text-dark-blue font-medium ">Book Journal</h1>
-      {/* <ul>
-      {books.map((book: Book) => (
-          <li key={book.title}>
-            <h3>{book.title}</h3>
-            <p>Start Date: {book.start_date}</p>
-            <p>End Date: {book.end_date}</p>
-            <p>Status: {book.status}</p>
-          </li>
-        ))}
-      </ul> */}
 
-<div className="w-full pt-5 flex flex-col md:flex-row items-center gap-2 md:gap-4">
-  <input
-    className="flex-grow p-2 rounded-md border border-gray-200 placeholder:text-gray-500 focus:outline-dark-blue w-full md:w-auto"
-    placeholder="Search"
-  />
-  <button
-    className="p-2 bg-dark-blue text-white px-4 w-full md:w-auto"
-    onClick={handleAddBook}
-  >
-    + Add New Book
-  </button>
-</div>
+      <div className="w-full pt-5 flex flex-col md:flex-row items-center gap-2 md:gap-4">
+        <input
+          className="flex-grow p-2 rounded-md border border-gray-200 placeholder:text-gray-500 focus:outline-dark-blue w-full md:w-auto"
+          placeholder="Search"
+        />
+        <button
+          className="p-2 bg-dark-blue text-white px-4 w-full md:w-auto"
+          onClick={handleAddBook}
+        >
+          + Add New Book
+        </button>
+      </div>
+
       {isPopupOpen && <Popup 
           onClose={closePopup} 
           mode={popupMode}
