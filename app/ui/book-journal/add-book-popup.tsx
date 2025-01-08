@@ -121,7 +121,7 @@ export default function AddBook({ onSubmit, onClose, mode, initialData }: Readon
             />
           </div>
 
-          <label className='autoSaverSwitch relative inline-flex cursor-pointer select-none items-center'>
+          <div className='autoSaverSwitch relative inline-flex cursor-pointer select-none items-center'>
             <input
               type='checkbox'
               name='autoSaver'
@@ -143,7 +143,7 @@ export default function AddBook({ onSubmit, onClose, mode, initialData }: Readon
             <span className=''>
               <span className='pl-1'> {formData.isToggled ? 'Finished' : 'In Progress'} </span>
             </span>
-          </label>
+          </div>
 
           <div>
             <DatePicker
