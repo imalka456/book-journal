@@ -1,7 +1,7 @@
 import { Book } from '../../models/interfaces';
 import { MdOutlineEdit } from "react-icons/md";
 
-export default function Table({books, onEdit}: { books: Book[], onEdit: (book: Book) => void; }) {
+export default function Table({books, onEdit}: Readonly<{ books: Book[], onEdit: (book: Book) => void; }>) {
     return (
         <div className="mt-6">
       <div className="inline-block min-w-full align-middle">
@@ -39,7 +39,7 @@ export default function Table({books, onEdit}: { books: Book[], onEdit: (book: B
                     <td className="text-md px-6 py-3">{book.status}</td>
                     <td className="text-md px-6 py-3">{book.isbn}</td>
                     <td className="text-md px-6 py-3"><button onClick={() => onEdit(book)}><MdOutlineEdit 
-                    className='rounded-full p-1 text-2xl bg-dark-blue text-white cursor-pointer'/></button></td>
+                    className='rounded-full p-1 text-2xl bg-dark-blue text-white cursor-pointer hover:bg-hover-color'/></button></td>
                     {/* <td className="text-md px-6 py-3">11</td> */}
                 </tr>
         ))}

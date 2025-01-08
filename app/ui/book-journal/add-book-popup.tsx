@@ -1,17 +1,19 @@
 import { useState, ChangeEvent } from 'react';
 import DatePicker from "../date-picker";
-// import Lottie from 'react-lottie';
-// import animationData from '../../../public/celebration.json';
+import animationData from '../../../public/celebration.json';
 import { Book } from '../../models/interfaces';
+import dynamic from 'next/dynamic';
 
-// const lottieOptions = {
-//   loop: true,
-//   autoplay: true, // Loop the animation
-//   animationData: animationData, // Provide the animation data
-//   rendererSettings: {
-//     preserveAspectRatio: 'xMidYMid slice',
-//   },
-// };
+const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
+
+const lottieOptions = {
+  loop: true,
+  autoplay: true, // Loop the animation
+  animationData: animationData, // Provide the animation data
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
 
 type AddBookProps = {
   onClose: () => void;
@@ -82,7 +84,7 @@ export default function AddBook({ onSubmit, onClose, mode, initialData }: Readon
           <div>
             {formData.isToggled && (
               <div className="w-full h-full flex items-center justify-center bg-opacity-50 z-50">
-                {/* <Lottie options={lottieOptions} height={100} width={100} /> */}
+                <Lottie options={lottieOptions} height={100} width={100} />
               </div>
             )}
           </div>
@@ -121,7 +123,8 @@ export default function AddBook({ onSubmit, onClose, mode, initialData }: Readon
             />
           </div>
 
-          <div className='autoSaverSwitch relative inline-flex cursor-pointer select-none items-center'>
+          <label className='autoSaverSwitch relative inline-flex cursor-pointer select-none items-center'>
+          <span className="sr-only">{formData.isToggled ? 'Toggle Finished' : 'Toggle In Progress'}</span>
             <input
               type='checkbox'
               name='autoSaver'
@@ -143,7 +146,7 @@ export default function AddBook({ onSubmit, onClose, mode, initialData }: Readon
             <span className=''>
               <span className='pl-1'> {formData.isToggled ? 'Finished' : 'In Progress'} </span>
             </span>
-          </div>
+          </label>
 
           <div>
             <DatePicker
