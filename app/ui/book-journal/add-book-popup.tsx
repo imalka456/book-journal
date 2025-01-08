@@ -1,17 +1,17 @@
 import { useState, ChangeEvent } from 'react';
 import DatePicker from "../date-picker";
-import Lottie from 'react-lottie';
-import animationData from '../../../public/celebration.json';
+// import Lottie from 'react-lottie';
+// import animationData from '../../../public/celebration.json';
 import { Book } from '../../models/interfaces';
 
-const lottieOptions = {
-  loop: true,
-  autoplay: true, // Loop the animation
-  animationData: animationData, // Provide the animation data
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
-  },
-};
+// const lottieOptions = {
+//   loop: true,
+//   autoplay: true, // Loop the animation
+//   animationData: animationData, // Provide the animation data
+//   rendererSettings: {
+//     preserveAspectRatio: 'xMidYMid slice',
+//   },
+// };
 
 type AddBookProps = {
   onClose: () => void;
@@ -82,7 +82,7 @@ export default function AddBook({ onSubmit, onClose, mode, initialData }: Readon
           <div>
             {formData.isToggled && (
               <div className="w-full h-full flex items-center justify-center bg-opacity-50 z-50">
-                <Lottie options={lottieOptions} height={100} width={100} />
+                {/* <Lottie options={lottieOptions} height={100} width={100} /> */}
               </div>
             )}
           </div>
