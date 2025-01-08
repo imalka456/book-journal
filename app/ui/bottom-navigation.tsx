@@ -7,7 +7,7 @@ import { MdDashboard, MdManageSearch, MdGames } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { usePathname } from 'next/navigation';
 
-export default function Navigation() {
+export default function BottomNavigation() {
   const [isOpen, setIsOpen]= useState(true);
   const pathname = usePathname();
 
