@@ -1,9 +1,8 @@
 "use client"
 import Table from "../ui/book-journal/table"
-import { fetchBooks } from '../lib/data';
 import { useState, useEffect } from 'react';
 import { Book } from '../models/interfaces';
-import { addNewBook, editBook } from '../lib/data';
+import { addNewBook, editBook, fetchBooks } from '../lib/data';
 import Popup from '../ui/book-journal/add-book-popup';
 
 export default function BookJournal() {

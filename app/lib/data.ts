@@ -79,15 +79,17 @@ export async function fetchBooks(): Promise<Book[]> {
 
   export async function addNewBook(book: { title: string; isbn: string; startDate: Date | undefined; endDate: Date | undefined; isToggled: boolean}): Promise<void>{
     try {
-      console.log(book);
       const userId = '1';
       const supabase = getSupabaseClient();
 
-      let { data: existingBook, error: bookError } = await supabase
+      const response = await supabase
       .from('books')
       .select('isbn, id')
       .eq('isbn', book.isbn)
       .single();
+
+      let existingBook = response.data;
+      const bookError = response.error;
 
       if (bookError && bookError.code !== 'PGRST116') {
           throw new Error('Error checking book availability')
@@ -130,8 +132,8 @@ export async function fetchBooks(): Promise<Book[]> {
             {
               user_id: userId,
               book_id: existingBook.id,//, start_date: startDateFormatted, end_date: endDateFormatted
-              start_date: startDateFormatted || null, // If no start_date, store as null
-              end_date: endDateFormatted || null, // If no start_date, store as null
+              start_date: startDateFormatted ?? null, // If no start_date, store as null
+              end_date: endDateFormatted ?? null, // If no start_date, store as null
               status: book.isToggled ? 'finished' : 'in_progress'
             },
           ])
