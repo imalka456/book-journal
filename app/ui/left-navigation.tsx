@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { BsArrowLeftShort, BsJournalCheck } from "react-icons/bs";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdDashboard, MdManageSearch, MdGames } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { usePathname } from 'next/navigation';
@@ -18,9 +18,21 @@ export default function LeftNavigation() {
     {id: 4, title: "Word Games", href: "/games", icon: <MdGames />}
   ]
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsOpen(window.innerWidth > 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+}, []);
+
   return (
     <nav className="bg-dark-blue p-5 h-screen">
-      <div className={`dark-blue text-white ${isOpen ? "w-64" : "w-20"}  p-4 transition-all duration-300 relative`}>
+      <div className={`dark-blue text-white ${isOpen ? "w-64" : "w-20"} p-4 transition-all duration-300 relative`}>
         <div className="px-4 pb-4 relative">
           <BsArrowLeftShort className={`bg-white text-3xl rounded-full text-dark-blue absolute
            -right-10 border border-dark-blue cursor-pointer ${!isOpen && "rotate-180"}`}

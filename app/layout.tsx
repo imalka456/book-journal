@@ -17,7 +17,7 @@ export default function RootLayout({
       <body className="h-full">
         <div className="flex h-full">
           <div className="h-full"><LeftNavigation/></div>
-          <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
+          <div className="flex-grow p-6 overflow-y-auto md:p-12">{children}</div>
           {/* <div className="flex-grow p-6  md:p-12">{children}</div> */}
         </div>
       </body>
