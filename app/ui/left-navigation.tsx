@@ -34,7 +34,7 @@ export default function LeftNavigation() {
 
   return (
     <div>
-      <div className='w-full h-16 bg-dark-blue sm:hidden flex items-center px-4'>
+      <div className='w-full h-16 bg-dark-blue sm:hidden flex items-center px-6'>
       <span className='sm:hidden bg-dark-blue text-white text-3xl top-5 left-4 cursor-pointer mr-2'>
       <GiHamburgerMenu onClick={() => setIsOpenMobileNav(!isOpenMobileNav)}/>
       </span>
@@ -42,8 +42,8 @@ export default function LeftNavigation() {
       </div>
 
       <div className={`ease-in-out duration-500 ${isOpenMobileNav ? "translate-x-0" : "-translate-x-full"}  sm:hidden`}>
-        <nav className="bg-dark-blue p-5 h-screen max-sm:fixed max-sm:z-10">
-          <div className={`dark-blue text-white w-64 p-4 relative`}>        
+        <nav className="bg-dark-blue h-screen max-sm:fixed max-sm:z-10">
+          <div className={`dark-blue text-white w-64 p-2 px-4 relative`}>        
             <div>
               {menus.map((menu) => (            
                 <li key={menu.id} className="list-none">
@@ -63,7 +63,7 @@ export default function LeftNavigation() {
       <div className='hidden sm:block'>
         <nav className="bg-dark-blue p-5 h-screen max-sm:fixed max-sm:z-10">
           <div className={`dark-blue text-white ${isOpen ? "w-64" : "w-20"} p-4 transition-all duration-300 relative`}>
-            <div className="px-4 pb-4 relative">
+            <div className="px-4 relative">
               <BsArrowLeftShort
               className={`bg-white text-3xl rounded-full text-dark-blue absolute
               -right-10 border border-dark-blue cursor-pointer ${!isOpen && "rotate-180"}`}

@@ -84,18 +84,20 @@ export default function BookJournal() {
 
   return (
     <div className="w-full">
-      <h1 className="mb-4 text-xl text-dark-blue font-medium ">Book Journal</h1>
+      <h1 className="mt-4 my-4 text-xl text-dark-blue font-medium ">Book Journal</h1>
 
-      <div className="w-full pt-5 flex flex-col sm:flex-row items-center gap-2 md:gap-4">
+      <div className="w-full pt-5 flex flex-row items-center gap-2 md:gap-4">
         <input
           className="flex-grow p-2 rounded-md border border-gray-200 placeholder:text-gray-500 focus:outline-dark-blue w-full sm:w-auto"
           placeholder="Search"
         />
         <button
-          className="p-2 bg-dark-blue text-white px-4 w-full sm:w-auto"
+          className="whitespace-nowrap p-2 bg-dark-blue text-white px-4 w-full w-auto"
           onClick={handleAddBook}
         >
-          + Add New Book
+          <label className="sm:hidden" htmlFor="add-book">+ Add</label>          
+          <label className="hidden sm:block md:hidden" htmlFor="add-book">+ Add Book</label>          
+          <label className="hidden md:block" htmlFor="add-book">+ Add New Book</label>          
         </button>
       </div>
 
