@@ -1,3 +1,3 @@
 export default function SearchHistory() {
-    return <h1>Search History</h1>;
+  return <h1>Search History</h1>;
 }

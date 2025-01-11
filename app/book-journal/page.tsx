@@ -1,9 +1,9 @@
-"use client"
-import Table from "../ui/book-journal/table"
-import { useState, useEffect } from 'react';
-import { Book } from '../models/interfaces';
-import { addNewBook, editBook, fetchBooks } from '../lib/data';
-import Popup from '../ui/book-journal/add-book-popup';
+"use client";
+import Table from "../ui/book-journal/table";
+import { useState, useEffect } from "react";
+import { Book } from "../models/interfaces";
+import { addNewBook, editBook, fetchBooks } from "../lib/data";
+import Popup from "../ui/book-journal/add-book-popup";
 
 export default function BookJournal() {
   const [books, setBooks] = useState<Book[]>([]); // State to store books data
@@ -27,7 +27,14 @@ export default function BookJournal() {
     setIsPopupOpen(true);
   };
 
-  const handlePopupSubmit = (data: { id: number | undefined, title: string; isbn: string; startDate: Date | undefined; endDate: Date | undefined; isToggled: boolean}) => {
+  const handlePopupSubmit = (data: {
+    id: number | undefined;
+    title: string;
+    isbn: string;
+    startDate: Date | undefined;
+    endDate: Date | undefined;
+    isToggled: boolean;
+  }) => {
     try {
       const handleBookOperation = (operation: () => Promise<void>) => {
         operation()
@@ -49,10 +56,9 @@ export default function BookJournal() {
       if (error instanceof Error) {
         setError(error.message); // If it's an instance of Error, we can safely access message
       } else {
-        setError('An unknown error occurred'); // Fallback for other types of errors
+        setError("An unknown error occurred"); // Fallback for other types of errors
       }
-    }   
-    
+    }
   };
 
   const getBooks = async () => {
@@ -63,7 +69,7 @@ export default function BookJournal() {
       if (error instanceof Error) {
         setError(error.message); // If it's an instance of Error, we can safely access message
       } else {
-        setError('An unknown error occurred'); // Fallback for other types of errors
+        setError("An unknown error occurred"); // Fallback for other types of errors
       }
     } finally {
       setLoading(false); // Set loading state to false once the data is fetched
@@ -84,7 +90,9 @@ export default function BookJournal() {
 
   return (
     <div className="w-full">
-      <h1 className="mt-4 my-4 text-xl text-dark-blue font-medium ">Book Journal</h1>
+      <h1 className="mt-4 my-4 text-xl text-dark-blue font-medium ">
+        Book Journal
+      </h1>
 
       <div className="w-full pt-5 flex flex-row items-center gap-2 md:gap-4">
         <input
@@ -95,18 +103,27 @@ export default function BookJournal() {
           className="whitespace-nowrap p-2 bg-dark-blue text-white px-4"
           onClick={handleAddBook}
         >
-          <label className="sm:hidden" htmlFor="add-book">+ Add</label>          
-          <label className="hidden sm:block md:hidden" htmlFor="add-book">+ Add Book</label>          
-          <label className="hidden md:block" htmlFor="add-book">+ Add New Book</label>          
+          <label className="sm:hidden" htmlFor="add-book">
+            + Add
+          </label>
+          <label className="hidden sm:block md:hidden" htmlFor="add-book">
+            + Add Book
+          </label>
+          <label className="hidden md:block" htmlFor="add-book">
+            + Add New Book
+          </label>
         </button>
       </div>
 
-      {isPopupOpen && <Popup 
-          onClose={closePopup} 
+      {isPopupOpen && (
+        <Popup
+          onClose={closePopup}
           mode={popupMode}
           initialData={selectedBook}
-          onSubmit={handlePopupSubmit }/>}
-      <Table books={books} onEdit={handleEditBook}/>
+          onSubmit={handlePopupSubmit}
+        />
+      )}
+      <Table books={books} onEdit={handleEditBook} />
     </div>
   );
 }
