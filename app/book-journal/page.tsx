@@ -92,7 +92,7 @@ export default function BookJournal() {
           placeholder="Search"
         />
         <button
-          className="whitespace-nowrap p-2 bg-dark-blue text-white px-4 w-full w-auto"
+          className="whitespace-nowrap p-2 bg-dark-blue text-white px-4"
           onClick={handleAddBook}
         >
           <label className="sm:hidden" htmlFor="add-book">+ Add</label>          
